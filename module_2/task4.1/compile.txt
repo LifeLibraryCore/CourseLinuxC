@@ -1,0 +1,1 @@
+gcc task_m2t4p1.c Contact.h -o task_m2t4p1

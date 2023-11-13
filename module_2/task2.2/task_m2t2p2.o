@@ -1,0 +1,137 @@
+	.file	"task_m2t2p2.c"
+	.section	.rodata
+.LC0:
+	.string	"rus"
+	.align 8
+.LC1:
+	.string	"\320\227\320\260\320\264\320\260\320\275\320\270\320\265 1. \320\232\320\260\320\273\321\214\320\272\321\203\320\273\321\217\321\202\320\276\321\200."
+	.align 8
+.LC2:
+	.string	"\320\237\321\200\320\270\320\274\320\265\321\200 \320\262\320\262\320\276\320\264\320\260: a \"\320\267\320\275\320\260\320\272\" b, \320\263\320\264\320\265:\n\ta \320\270 b - \321\207\320\270\321\201\320\273\320\260;\n\t\"\320\267\320\275\320\260\320\272\" - \320\274\320\260\321\202\320\265\320\274\320\260\321\202\320\270\321\207\320\265\321\201\320\272\320\270\320\271 \320\267\320\275\320\260\320\272: +, -, *, /;"
+.LC4:
+	.string	"\320\222\320\262\320\276\320\264: "
+.LC5:
+	.string	"%lf %c %lf"
+.LC6:
+	.string	"\320\236\321\210\320\270\320\261\320\272\320\260 \320\262\320\262\320\276\320\264\320\260!"
+	.align 8
+.LC7:
+	.string	"\320\236\321\210\320\270\320\261\320\272\320\260 \320\262\320\262\320\276\320\264\320\260 \320\267\320\275\320\260\320\272\320\260! \320\222\321\213\321\205\320\276\320\264 \320\270\320\267 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\274\321\213!"
+.LC8:
+	.string	"\n%lf %c %lf = %lf\n"
+	.text
+	.globl	main
+	.type	main, @function
+main:
+.LFB0:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	subq	$48, %rsp
+	leaq	.LC0(%rip), %rsi
+	movl	$6, %edi
+	call	setlocale@PLT
+	leaq	.LC1(%rip), %rdi
+	call	puts@PLT
+	leaq	.LC2(%rip), %rdi
+	call	puts@PLT
+	movb	$32, -9(%rbp)
+	pxor	%xmm0, %xmm0
+	movsd	%xmm0, -24(%rbp)
+	pxor	%xmm0, %xmm0
+	movsd	%xmm0, -32(%rbp)
+	pxor	%xmm0, %xmm0
+	movsd	%xmm0, -8(%rbp)
+.L9:
+	leaq	.LC4(%rip), %rdi
+	movl	$0, %eax
+	call	printf@PLT
+	leaq	-32(%rbp), %rcx
+	leaq	-9(%rbp), %rdx
+	leaq	-24(%rbp), %rax
+	movq	%rax, %rsi
+	leaq	.LC5(%rip), %rdi
+	movl	$0, %eax
+	call	__isoc99_scanf@PLT
+	testl	%eax, %eax
+	jne	.L2
+	leaq	.LC6(%rip), %rdi
+	call	puts@PLT
+	movl	$1, %eax
+	jmp	.L10
+.L2:
+	movzbl	-9(%rbp), %eax
+	cmpb	$43, %al
+	je	.L4
+	movzbl	-9(%rbp), %eax
+	cmpb	$45, %al
+	je	.L4
+	movzbl	-9(%rbp), %eax
+	cmpb	$42, %al
+	je	.L4
+	movzbl	-9(%rbp), %eax
+	cmpb	$47, %al
+	je	.L4
+	leaq	.LC7(%rip), %rdi
+	call	puts@PLT
+	movl	$0, %eax
+	jmp	.L10
+.L4:
+	movzbl	-9(%rbp), %eax
+	cmpb	$43, %al
+	jne	.L5
+	movsd	-24(%rbp), %xmm1
+	movsd	-32(%rbp), %xmm0
+	addsd	%xmm1, %xmm0
+	movsd	%xmm0, -8(%rbp)
+.L5:
+	movzbl	-9(%rbp), %eax
+	cmpb	$45, %al
+	jne	.L6
+	movsd	-24(%rbp), %xmm0
+	movsd	-32(%rbp), %xmm1
+	subsd	%xmm1, %xmm0
+	movsd	%xmm0, -8(%rbp)
+.L6:
+	movzbl	-9(%rbp), %eax
+	cmpb	$42, %al
+	jne	.L7
+	movsd	-24(%rbp), %xmm1
+	movsd	-32(%rbp), %xmm0
+	mulsd	%xmm1, %xmm0
+	movsd	%xmm0, -8(%rbp)
+.L7:
+	movzbl	-9(%rbp), %eax
+	cmpb	$47, %al
+	jne	.L8
+	movsd	-24(%rbp), %xmm0
+	movsd	-32(%rbp), %xmm1
+	divsd	%xmm1, %xmm0
+	movsd	%xmm0, -8(%rbp)
+.L8:
+	movsd	-32(%rbp), %xmm0
+	movzbl	-9(%rbp), %eax
+	movsbl	%al, %edx
+	movq	-24(%rbp), %rax
+	movsd	-8(%rbp), %xmm1
+	movapd	%xmm1, %xmm2
+	movapd	%xmm0, %xmm1
+	movl	%edx, %esi
+	movq	%rax, -40(%rbp)
+	movsd	-40(%rbp), %xmm0
+	leaq	.LC8(%rip), %rdi
+	movl	$3, %eax
+	call	printf@PLT
+	jmp	.L9
+.L10:
+	leave
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE0:
+	.size	main, .-main
+	.ident	"GCC: (Debian 6.3.0-18+deb9u1) 6.3.0 20170516"
+	.section	.note.GNU-stack,"",@progbits
