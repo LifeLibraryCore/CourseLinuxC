@@ -1,0 +1,1 @@
+cmd_/home/user/tasks/course/LinuxC/module_5/task_1/Module.symvers := sed 's/\.ko$$/\.o/' /home/user/tasks/course/LinuxC/module_5/task_1/modules.order | scripts/mod/modpost -m -a  -o /home/user/tasks/course/LinuxC/module_5/task_1/Module.symvers -e -i Module.symvers   -T -

@@ -1,0 +1,1 @@
+cmd_/home/user/tasks/course/LinuxC/module_5/task_1/task_1.ko := ld -r  -m elf_x86_64 -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/user/tasks/course/LinuxC/module_5/task_1/task_1.ko /home/user/tasks/course/LinuxC/module_5/task_1/task_1.o /home/user/tasks/course/LinuxC/module_5/task_1/task_1.mod.o;  true
